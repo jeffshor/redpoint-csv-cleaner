@@ -318,7 +318,6 @@ def main():
     **Tips:**
     - You can upload multiple files at once
     - The tool will show progress for each file
-    - Check the "Settings" sidebar to see what transformations are applied
     - If processing fails, check that your CSV has the expected column names
     """)
 
