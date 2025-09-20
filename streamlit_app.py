@@ -224,17 +224,9 @@ def create_zip_download(files_dict):
 
 def main():
     # Title and description
-    st.title("🧹 CSV Cleaner Tool")
+    st.title("🧹 Redpoint CSV Cleaner Tool")
     st.markdown("""
-    Upload your CSV files to clean and standardize the data according to your business rules.
-    
-    **What this tool does:**
-    - Standardizes column headers
-    - Cleans phone numbers (digits only)
-    - Formats dates to MM-DD-YYYY
-    - Processes interest fields into separate columns
-    - Maps facility names (Alexandria→ALX, Sterling→STR, Rio→RIO)
-    - Maps badge types (Member→MEMBER, Staff→STAFF, etc.)
+    Upload CSV files downloaded from redpoint to clean and reformat for Brevo.
     """)
     
     # Initialize cleaner
@@ -242,23 +234,6 @@ def main():
         st.session_state.cleaner = OptimizedCSVCleaner()
     
     cleaner = st.session_state.cleaner
-    
-    # Sidebar for settings
-    with st.sidebar:
-        st.header("⚙️ Settings")
-        
-        # Show mapping rules
-        with st.expander("📋 Header Mappings"):
-            for old, new in cleaner.header_mappings.items():
-                st.text(f"{old} → {new}")
-        
-        with st.expander("🏢 Facility Mappings"):
-            for old, new in cleaner.cell_mappings["LOCATION"].items():
-                st.text(f"{old} → {new}")
-        
-        with st.expander("🎫 Badge Mappings"):
-            for old, new in cleaner.cell_mappings["BADGE"].items():
-                st.text(f"{old} → {new}")
     
     # File upload section
     st.header("📁 Upload CSV Files")
